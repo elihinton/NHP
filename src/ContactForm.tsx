@@ -58,7 +58,7 @@ const ContactForm = () => {
         setStatus("Sending...");
 
         // Validate if environment variables are available
-        if (!import.meta.env.VITE_SERVICE_ID || !import.meta.env.VITE_TEMPLATE_ID || !import.meta.env.VITE_PUBLIC_KEY) {
+        if (!import.meta.env.VITE_SERVICE_ID_TEST || !import.meta.env.VITE_TEMPLATE_ID || !import.meta.env.VITE_PUBLIC_KEY) {
             setStatus("Missing environment variables for email service.");
             return;
         }
@@ -67,7 +67,7 @@ const ContactForm = () => {
 
         // Send email with emailjs
         emailjs
-            .send(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, emailContent, {
+            .send(import.meta.env.VITE_SERVICE_ID_TEST, import.meta.env.VITE_TEMPLATE_ID, emailContent, {
                 publicKey: import.meta.env.VITE_PUBLIC_KEY,
             })
             .then(

@@ -25,7 +25,7 @@ createRoot(document.getElementById('root')!).render(
     <Map></Map>
     <Services></Services>
     <Bookings
-      clinikoId='cliniko-62289594'
+      clinikoId={import.meta.env.VITE_CLINIKO_ID}
     ></Bookings>
     <div className="w-screen h-4 bg-slate-200 mt-32"></div>
     <Footer>
