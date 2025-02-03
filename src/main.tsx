@@ -8,7 +8,6 @@ import AboutUs from './AboutUs.tsx'
 import Map from './Map.tsx'
 import Services from './Services.tsx'
 import Bookings from './Bookings.tsx'
-import Button from './Button.tsx'
 import Footer from './Footer.tsx'
 import Copyright from './Copyright.tsx'
 

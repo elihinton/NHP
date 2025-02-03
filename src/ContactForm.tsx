@@ -1,32 +1,28 @@
 import { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 
-type FormDataEntryValue = string | File | null;
 
-interface CustomFormData {
-  [key: string]: FormDataEntryValue;
-}
 
 const ContactForm = () => {
     const form = useRef<HTMLFormElement | null>(null); 
     const [status, setStatus] = useState<string | null>(null);
-    const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
+    // const [name, setName] = useState("");
+    // const [phone, setPhone] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [message, setMessage] = useState("");
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-        const { name, value } = event.target;
-        if (name === "name") {
-            setName(value);
-        } else if (name === "phone") {
-            setPhone(value);
-        } else if (name === "email") {
-            setEmail(value);
-        } else if (name === "message") {
-            setMessage(value);
-        }
-    };
+    // const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+    //     const { name, value } = event.target;
+    //     if (name === "name") {
+    //         setName(value);
+    //     } else if (name === "phone") {
+    //         setPhone(value);
+    //     } else if (name === "email") {
+    //         setEmail(value);
+    //     } else if (name === "message") {
+    //         setMessage(value);
+    //     }
+    // };
 
     
 
@@ -87,7 +83,6 @@ const ContactForm = () => {
                 type="text"
                 name="user_name"
                 placeholder="Name"
-                onChange={handleInputChange}
                 className="bg-slate-50 text-gray-700 p-3 box-border rounded-lg block outline-none focus:border-2 focus:border-blue-700 hover:bg-white mt-2 w-full"
                 required
             />
@@ -95,7 +90,6 @@ const ContactForm = () => {
                 type="text"
                 name="phone"
                 placeholder="Phone Number"
-                onChange={handleInputChange}
                 className="bg-slate-50 text-gray-700 p-3 rounded-lg block outline-none focus:border-2 focus:border-blue-700 hover:bg-white mt-2 w-full"
                 required
             />
@@ -103,14 +97,12 @@ const ContactForm = () => {
                 type="email"
                 name="user_email"
                 placeholder="Email"
-                onChange={handleInputChange}
                 className="bg-slate-50 text-gray-700 p-3 rounded-lg block outline-none focus:border-2 focus:border-blue-700 hover:bg-white mt-2 w-full"
                 required
             />
             <textarea
                 name="message"
                 placeholder="Enter your message for us here"
-                onChange={handleInputChange}
                 className="bg-slate-50 text-gray-700 p-3 rounded-lg block outline-none focus:border-2 focus:border-blue-700 hover:bg-white mt-2 w-full h-32"
                 required
             />
