@@ -4,7 +4,7 @@ import Logo from './assets/Nick Hinton Podiatrist.png'
 function App() {
   return (
 
-    <section className="w-screen h-52  sm:flex sm:items-center sm:justify-between bg-white">
+    <section className="w-screen h-52  sm:flex sm:items-center sm:justify-between bg-white pt-4">
       <img className="w-32 h-32 sm:m-5 mx-auto mt-5" src={Logo} alt="Nick Hinton Podiatry Logo"/>
       <div className="flex-col flex sm:flex-row sm:right-12 right-0">
         <div className="flex mx-8 mb-8 sm:m-8 items-center w-1/2 sm:w-44">

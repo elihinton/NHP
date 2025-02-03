@@ -16,8 +16,8 @@ const ButtonRow = () => {
     <div className="w-screen mt-32 sm:m-0">
 
       <div className="sm:hidden flex justify-end mb-4 mr-4">
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <Menu className="w-8 h-8 text-gray-800" />
+        <button className="bg-slate-200" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Menu className="w-8 h-8 text-gray-800 bg-slate-200" />
         </button>
       </div>
 
