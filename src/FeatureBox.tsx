@@ -2,12 +2,14 @@
 interface FeatureBoxProperties {
     svg ?: string,
     label : string,
+    index : number,
     customStyle ?: string
 }
 
 const FeatureBox = ({
     svg = "",
     label = "",
+    index = 0,
     customStyle = "p-4 border-solid border-2 rounded-lg bg-slate-300 hover:bg-slate-400 text-white"
 }: FeatureBoxProperties) => {
 
@@ -16,7 +18,7 @@ const FeatureBox = ({
     return (
         <div>
             {svgFile}
-            <p className = {customStyle}>{label}</p>
+            <p key={index} className = {customStyle}>{label}</p>
         </div>
     )
 }

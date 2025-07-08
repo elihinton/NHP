@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'main':"url('./src/assets/main-image.jpeg')"
+        'main':"url('./src/assets/main-image.webp')"
       },
       height:{
         '97':'27rem',

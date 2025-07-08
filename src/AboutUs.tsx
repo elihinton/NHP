@@ -12,8 +12,6 @@ const AboutUs : React.FC = () => {
         }
     }
 
-    //btn?.addEventListener('click',toggleButtonText);
-
     const toggleShowInfo = () => {
         // toggles information shown
         const element = document.getElementById('extra-info');

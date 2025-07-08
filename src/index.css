@@ -1003,7 +1003,7 @@ video {
 }
 
 .bg-main {
-  background-image: url('./src/assets/main-image.jpeg');
+  background-image: url('./src/assets/main-image.webp');
 }
 
 .bg-cover {

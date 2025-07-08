@@ -82,6 +82,7 @@ const ContactForm = () => {
             <input
                 type="text"
                 name="user_name"
+                autoComplete="name"
                 placeholder="Name"
                 className="bg-slate-50 text-gray-700 p-3 box-border rounded-lg block outline-none focus:border-2 focus:border-blue-700 hover:bg-white mt-2 w-full"
                 required
@@ -89,6 +90,7 @@ const ContactForm = () => {
             <input
                 type="text"
                 name="phone"
+                autoComplete="tel"
                 placeholder="Phone Number"
                 className="bg-slate-50 text-gray-700 p-3 rounded-lg block outline-none focus:border-2 focus:border-blue-700 hover:bg-white mt-2 w-full"
                 required
@@ -96,12 +98,14 @@ const ContactForm = () => {
             <input
                 type="email"
                 name="user_email"
+                autoComplete="email"
                 placeholder="Email"
                 className="bg-slate-50 text-gray-700 p-3 rounded-lg block outline-none focus:border-2 focus:border-blue-700 hover:bg-white mt-2 w-full"
                 required
             />
             <textarea
                 name="message"
+                id="message"
                 placeholder="Enter your message for us here"
                 className="bg-slate-50 text-gray-700 p-3 rounded-lg block outline-none focus:border-2 focus:border-blue-700 hover:bg-white mt-2 w-full h-32"
                 required

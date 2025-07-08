@@ -20,7 +20,7 @@ const Bookings = ({clinikoId = ""}: clinikoIdProp) => {
     <div id="appointment-booking" className="bg-white">
         <h2 className="text-3xl sm:text-5xl text-center font-bold text-blue-500 mb-12 ">Book an Appointment</h2>
         <div className="flex justify-center items-center">
-            <iframe src='https://nick-hinton-podiatrist.au1.cliniko.com/bookings?practitioner_id=125484&embedded=true' className="w-4/5 h-98"></iframe>
+            <iframe title="Online Booking" src='https://nick-hinton-podiatrist.au1.cliniko.com/bookings?practitioner_id=125484&embedded=true' className="w-4/5 h-98"></iframe>
         </div>
     </div>
   )

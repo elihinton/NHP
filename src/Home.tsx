@@ -1,5 +1,5 @@
 import Button from './Button'
-import BgImage from './assets/main-image.jpeg'
+import BgImage from './assets/main-image.webp'
 
 const Home : React.FC = () => {
     
