@@ -16,7 +16,7 @@ const FeatureBox = ({
     let svgFile = <div>{svg}</div>;
 
     return (
-        <div>
+        <div key={index}>
             {svgFile}
             <p key={index} className = {customStyle}>{label}</p>
         </div>
