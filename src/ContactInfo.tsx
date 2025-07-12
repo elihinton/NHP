@@ -20,12 +20,12 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ locations, email }) => {
     }
 
   return (
-    <div id="contact-info" className="w-screen lg:w-1/2 overflow-hidden">
-      <h2 className="text-3xl font-bold mt-32 lg:mt-0 text-slate-50 md:text-center text-center">Contact Details for each Location</h2>
+    <div id="contact-info" className="w-screen lg:w-1/2 mt-32">
+      <h2 className="text-3xl font-bold text-slate-50 md:text-center text-center">Contact Details</h2>
       
-      <div className="flex flex-col items-center justify-center mt-4 w-screen ">
+      <div className="flex flex-col items-center justify-center mt-4 w-full">
         {locations.map((location, index) => (
-          <div key={index} className="location-card p-4 mb-4 w-72 lg:w-screen border-4 border-double border-slate-500 rounded-lg shadow-lg bg-slate-300">
+          <div key={index} className="location-card p-4 mb-4 w-72 lg:w-2/3 border-4 border-double border-slate-500 rounded-lg shadow-lg bg-slate-300">
             <h3 className="text-xl font-semibold">{location.suburb}</h3>
             <p className="text-gray-700">{location.address}</p>
             <p className="text-gray-700">

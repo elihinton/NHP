@@ -6,25 +6,20 @@ import emailjs from '@emailjs/browser';
 const ContactForm = () => {
     const form = useRef<HTMLFormElement | null>(null); 
     const [status, setStatus] = useState<string | null>(null);
-    // const [name, setName] = useState("");
-    // const [phone, setPhone] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [message, setMessage] = useState("");
 
-    // const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-    //     const { name, value } = event.target;
-    //     if (name === "name") {
-    //         setName(value);
-    //     } else if (name === "phone") {
-    //         setPhone(value);
-    //     } else if (name === "email") {
-    //         setEmail(value);
-    //     } else if (name === "message") {
-    //         setMessage(value);
-    //     }
-    // };
+    const validatePhoneNumber = (phone : FormDataEntryValue | null) => {
+        if (typeof phone != 'string') return false;
+        console.log("phone", phone);
+        const auPhoneRegex : RegExp = /^(?:\+61|0)[2-478](?: ?\d){8}$/;
+        return auPhoneRegex.test(phone);
+    }
 
-    
+    const validateEmail = (email : FormDataEntryValue | null) => {
+        if (typeof email != 'string') return false;
+        console.log("email",email);
+        const emailRegex : RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
+    }
 
     const handleFormSubmission = (e: React.FormEvent) => {
         e.preventDefault();
@@ -40,44 +35,49 @@ const ContactForm = () => {
         const message = formData.get("message");
         const phone = formData.get("phone");
 
-        const combinedValues = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`
-
-        const emailContent: Record<string, unknown> = {};
-
-        emailContent["message"] = combinedValues;
-
-        if (!name || !email || !message || !phone) {
+        // Check for missing/empty fields
+        if (
+            typeof name !== 'string' || name.trim() === '' ||
+            typeof email !== 'string' || email.trim() === '' ||
+            typeof phone !== 'string' || phone.trim() === '' ||
+            typeof message !== 'string' || message.trim() === ''
+        ) {
             setStatus("Please fill in all fields.");
             return;
         }
 
-        setStatus("Sending...");
+        const phoneStr = phone as string;
+        const emailStr = email as string;
+        // Validate phone and email
+        if (!validatePhoneNumber(phoneStr) || !validateEmail(emailStr)) {
+            setStatus("Invalid Email or Phone Number");
+            return;
+        }
 
-        // Validate if environment variables are available
+        const combinedValues = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`;
+        const emailContent = { message: combinedValues };
+
+        // Validate environment vars
         if (!import.meta.env.VITE_SERVICE_ID_TEST || !import.meta.env.VITE_TEMPLATE_ID || !import.meta.env.VITE_PUBLIC_KEY) {
             setStatus("Missing environment variables for email service.");
             return;
         }
 
-        console.log(emailContent);
+        setStatus("Sending...");
 
-        // Send email with emailjs
         emailjs
             .send(import.meta.env.VITE_SERVICE_ID_TEST, import.meta.env.VITE_TEMPLATE_ID, emailContent, {
-                publicKey: import.meta.env.VITE_PUBLIC_KEY,
+            publicKey: import.meta.env.VITE_PUBLIC_KEY,
             })
             .then(
-                () => {
-                    setStatus("SUCCESS! Your message has been sent.");
-                },
-                (error) => {
-                    setStatus(`FAILED... ${error.text}`);
-                }
+            () => setStatus("SUCCESS! Your message has been sent."),
+            (error) => setStatus(`FAILED... ${error.text}`)
             );
-    };
+        };
+
 
     return (
-        <form ref={form} onSubmit={handleFormSubmission} id="contact-form" className="h-96 sm:w-96 w-72 flex-col justify-items-center items-center lg:m-0 mx-auto ">
+        <form ref={form} onSubmit={handleFormSubmission} id="contact-form" className="h-96 sm:w-96 w-72 flex-col justify-items-center items-center lg:m-0 mx-auto mb-2 sm:mb-0">
             <h1 className="text-center text-3xl font-bold text-slate-100 p-3">Contact Us</h1>
             <input
                 type="text"
@@ -110,12 +110,13 @@ const ContactForm = () => {
                 className="bg-slate-50 text-gray-700 p-3 rounded-lg block outline-none focus:border-2 focus:border-blue-700 hover:bg-white mt-2 w-full h-32"
                 required
             />
+            {status && <p className="mt-4 text-slate-100 text-center font-bold">{status}</p>}
             <div className="flex justify-center items-center mt-2 mb-8">
-                <button type="submit" className="mt-2  bg-slate-300 hover:bg-slate-400 hover:border-gray-700 border-2 active:scale-95">
+                <button type="submit" className="mt-2 bg-slate-300 hover:bg-slate-400 hover:border-gray-700 border-2 active:scale-95">
                     Enquire Now
                 </button>
             </div>
-            {status && <p>{status}</p>}
+            
         </form>
     );
 };
