@@ -9,14 +9,12 @@ const ContactForm = () => {
 
     const validatePhoneNumber = (phone : FormDataEntryValue | null) => {
         if (typeof phone != 'string') return false;
-        console.log("phone", phone);
         const auPhoneRegex : RegExp = /^(?:\+61|0)[2-478](?: ?\d){8}$/;
         return auPhoneRegex.test(phone);
     }
 
     const validateEmail = (email : FormDataEntryValue | null) => {
         if (typeof email != 'string') return false;
-        console.log("email",email);
         const emailRegex : RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
     }
