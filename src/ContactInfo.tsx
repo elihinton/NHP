@@ -20,7 +20,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ locations, email }) => {
     }
 
   return (
-    <div id="contact-info" className="w-screen lg:w-1/2 mt-32">
+    <div id="contact-info" className="w-screen lg:w-1/2 mt-4">
       <h2 className="text-3xl font-bold text-slate-50 md:text-center text-center">Contact Details</h2>
       
       <div className="flex flex-col items-center justify-center mt-4 w-full">

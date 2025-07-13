@@ -75,7 +75,7 @@ const ContactForm = () => {
 
 
     return (
-        <form ref={form} onSubmit={handleFormSubmission} id="contact-form" className="h-96 sm:w-96 w-72 flex-col justify-items-center items-center lg:m-0 mx-auto mb-2 sm:mb-0">
+        <form ref={form} onSubmit={handleFormSubmission} id="contact-form" className="h-96 sm:w-96 w-72 flex-col justify-items-center items-center lg:m-0 mx-auto mb-28 sm:mb-0">
             <h1 className="text-center text-3xl font-bold text-slate-100 p-3">Contact Us</h1>
             <input
                 type="text"
